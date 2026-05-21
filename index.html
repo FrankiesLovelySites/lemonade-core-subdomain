@@ -3,397 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemonade CORE: Immersive Games Built to Play Anywhere, Anytime.</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <title>Get Quick | Healthy Energy & Lemonade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
     <style>
+        /* --- BRAND VARIABLES --- */
         :root {
-            --main-bg: #000000;
-            --accent-color: #b1aeac;
-            --discord-color: #5865F2;
-            --text-white: #ffffff;
-            --box-bg: #1b1a1a;
-            --box-hover: #262525;
-            --font-family: 'Aldrich', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --bg-dark: #0b0c10;
+            --text-light: #ffffff;
+            --bolt-yellow: #f1c40f;
+            --bolt-pink: #e91e63;
+            --card-bg: #1f2833;
         }
 
+        /* --- GLOBAL STYLES --- */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: var(--main-bg);
-            color: var(--text-white);
-            font-family: var(--font-family);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             overflow-x: hidden;
+            letter-spacing: -0.02em;
         }
 
-        /* --- Navigation --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 15px 8%;
+            background-color: rgba(11, 12, 16, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            transition: 0.3s;
+            border-bottom: 2px solid var(--bolt-pink);
+            backdrop-filter: blur(10px);
         }
 
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            padding: 10px 50px;
-            border-bottom: 1px solid var(--accent-color);
+        .text-logo {
+            font-size: 26px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            font-style: italic;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--text-white);
-            gap: 15px;
+        .text-logo span.yellow { 
+            color: var(--bolt-yellow); 
+            text-shadow: 2px 2px 0px rgba(233, 30, 99, 0.3);
+        }
+        
+        .text-logo span.pink { 
+            color: var(--bolt-pink); 
         }
 
-        .logo img {
-            height: 45px;
-            transition: var(--transition);
-        }
-
-        .logo:hover img {
-            transform: rotate(-10deg) scale(1.1);
-        }
-
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
-            align-items: center;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-white);
+        nav ul li {
+            margin-left: 30px;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
+        nav ul li:hover {
+            color: var(--bolt-yellow);
         }
 
-        /* --- Discord Button Style --- */
-        .btn-discord {
-            background-color: var(--discord-color);
-            color: white !important;
-            padding: 10px 25px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .btn-discord:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--discord-color);
-            background-color: #4752c4;
-        }
-
-        /* --- Hero Section --- */
+        /* --- HERO BANNER SECTION (TEXT-ONLY LOGIC) --- */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://files.cdn-files-a.com/uploads/11893592/2000_69bdafdec257c.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            height: 60vh;
+            min-height: 400px;
             display: flex;
             align-items: center;
-            padding: 0 10%;
+            justify-content: flex-start;
+            padding: 0 8%;
+            margin-top: 65px;
+            /* Replaced background image with an energetic geometric gradient glow */
+            background: radial-gradient(circle at 80% 20%, rgba(233, 30, 99, 0.15), transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(241, 196, 15, 0.1), transparent 50%),
+                        #0b0c10;
         }
 
-        .hero-content {
-            max-width: 800px;
-            background: rgba(177, 174, 172, 0.95);
+        .hero-text {
+            max-width: 550px;
+            background: rgba(31, 40, 51, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(to right, var(--bolt-yellow), var(--bolt-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--bolt-yellow), var(--bolt-pink));
             color: #000;
-            padding: 60px;
-            border-radius: 4px;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            font-weight: 900;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-style: italic;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .hero-content::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 6px; height: 100%;
-            background: var(--discord-color);
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-
-        .hero-content h2 {
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
-
-        /* --- Sections --- */
-        .section {
-            padding: 100px 10%;
+        /* --- BENEFITS SECTION --- */
+        .benefits {
+            padding: 80px 8%;
+            text-align: center;
+            background-color: #12141c;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 20px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 45px;
+            font-style: italic;
         }
 
-        /* --- Team Grid (4 People) --- */
-        .corporate-grid {
+        .section-title span { color: var(--bolt-pink); }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .member-card {
-            background: var(--box-bg);
-            padding: 40px 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .member-card:hover {
-            transform: translateY(-15px);
-            background: var(--box-hover);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(177, 174, 172, 0.1);
-        }
-
-        .member-card img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-            border: 3px solid #333;
-            transition: 0.3s;
-        }
-
-        .member-card:hover img {
-            border-color: var(--accent-color);
-            transform: scale(1.05);
-        }
-
-        /* --- Projects --- */
-        .project-slider {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
-        .project-card {
-            background: var(--box-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition);
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            transition: transform 0.3s, border-color 0.3s;
+            border: 1px solid rgba(255,255,255,0.03);
+            text-align: left;
         }
 
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--bolt-yellow);
         }
 
-        .project-img {
-            height: 280px;
-            background-size: cover;
-            background-position: center;
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
-        .project-info {
-            padding: 25px;
-        }
-
-        .project-tag {
-            font-size: 10px;
-            color: var(--accent-color);
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
-        .stars {
-            color: #ffbf00;
-            margin-top: 10px;
+        .card p {
+            color: #9ca3af;
+            line-height: 1.5;
+            font-size: 0.95rem;
         }
 
-        /* --- Footer --- */
+        /* --- CALL TO ACTION --- */
+        .cta {
+            padding: 100px 8%;
+            text-align: center;
+            background: linear-gradient(180deg, #12141c, #0b0c10);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* --- FOOTER --- */
         footer {
-            background: #080807;
-            padding: 60px 10%;
+            padding: 40px 8%;
+            background-color: var(--bg-dark);
+            border-top: 1px solid #1f2833;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #1a1a1a;
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 700;
         }
 
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
-            footer { flex-direction: column; text-align: center; gap: 30px; }
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .hero {
+                padding: 100px 5% 40px 5%;
+                justify-content: center;
+                height: auto;
+                min-height: 350px;
+            }
+            .hero-text {
+                text-align: center;
+                padding: 25px;
+            }
+            .hero-text h1 { font-size: 2rem; }
+            .cta h2 { font-size: 2.2rem; }
+            footer { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav id="navbar">
-        <a href="#" class="logo">
-            <img src="https://files.cdn-files-a.com/uploads/11893592/400_filter_nobg_69bdafbda24ff.png" alt="Lemonade CORE">
-            <span>Lemonade CORE</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#projects">Recent Projects</a></li>
-            <li>
-                <a href="https://discord.gg/xNzMxZassu" target="_blank" class="btn-discord">
-                    <i class="fab fa-discord"></i> DISCORD
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <header>
+        <div class="text-logo">
+            <span class="yellow">Get</span><span class="pink">Quick</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#shop">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content" data-aos="zoom-out-right">
-            <h1>Lemonade CORE: Immersive Gaming</h1>
-            <h2>High-quality interactive experiences for PC, console, and mobile. Built for the next generation of players.</h2>
-            <a href="https://discord.gg/xNzMxZassu" target="_blank" class="btn-discord" style="display:inline-flex; padding: 15px 35px; font-size: 1.1rem;">
-                <i class="fab fa-discord fa-lg"></i> JOIN THE SERVER
-            </a>
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>When life goes fast... <br><span>Go Faster!</span></h1>
+            <p>Stand out from the crowd. Power through your day with Get Quick—the ultimate healthy lemonade packed with clean energy and premium benefits to keep you moving at top speed.</p>
+            <a href="http://www.getquick.lemonade-co.site" class="btn" target="_blank">Order Now</a>
         </div>
     </section>
 
-    <section id="about" class="section">
-        <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
-            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
-                <img src="https://i.ibb.co/7dxBY7Lc/Screenshot-2026-03-30-162520.png" style="width:100%; border-radius: 12px; border: 1px solid #333;" alt="Gaming Setup">
+    <section class="benefits" id="benefits">
+        <h2 class="section-title">With Added <span>Health Benefits</span></h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Clean Energy</h3>
+                <p>No jitters, no synthetic crashes. Just pure, rapid fuel to keep your mind and body completely in the zone.</p>
             </div>
-            <div style="flex: 1.2; min-width: 300px;" data-aos="fade-left">
-                <h2 class="section-title">About Lemonade CORE</h2>
-                <p style="margin-bottom: 20px;">We are an independent game studio dedicated to crafting bold concepts and polished interactive motion. From ideation to full-cycle production, we bring worlds to life with a player-first mindset.</p>
-                <p>We specialize in optimization and porting, ensuring that our visual fidelity translates perfectly across all platforms, from high-end PCs to mobile devices.</p>
+            <div class="card">
+                <div class="card-icon">🍋</div>
+                <h3>Real Lemonade</h3>
+                <p>Made with crisp, natural ingredients that deliver a refreshing, bold flavor that stands out.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="updates" class="section" style="background: #050505;">
-        <h2 class="section-title" data-aos="fade-up">Updates</h2>
-        <div class="corporate-grid">
-            <div class="member-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://i.ibb.co/tTq0zH1T/Screenshot-2026-03-30-162409.png" alt="CEO">
-                <h4>Birdie Boogie</h4>
-                <p style="color: var(--accent-color); font-size: 0.9rem;">version 1.0.2</p>
-            </div>
-            <div class="member-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://files.cdn-files-a.com/uploads/11893592/2000_69bdb298e8c20.png" alt="VCEO">
-                <h4>Blox Ronalds</h4>
-                <p style="color: var(--accent-color); font-size: 0.9rem;">Version 3.0.2</p>
-            </div>
-            <div class="member-card" data-aos="fade-up" data-aos-delay="300">
-                <img src="https://files.cdn-files-a.com/uploads/11893592/2000_69bdb3b8738c2.png" alt="Director">
-                <h4>Blocky 2</h4>
-                <p style="color: var(--accent-color); font-size: 0.9rem;">Version 2.0.1</p>
-            </div>
-            <div class="member-card" data-aos="fade-up" data-aos-delay="400">
-                <img src="https://files.cdn-files-a.com/uploads/11893592/2000_69bdafdec257c.png" alt="Community Director">
-                <h4>More news soon!</h4>
-                <p style="color: var(--accent-color); font-size: 0.9rem;">Have a question? Join our Discord!</p>
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Wellness Boost</h3>
+                <p>Packed with vitamins and essential nutrients formulated to support your active, fast-paced lifestyle.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <h2 class="section-title" data-aos="fade-up">Recent Projects</h2>
-        <div class="project-slider">
-            <div class="project-card" data-aos="zoom-in-up">
-                <div class="project-img" style="background-image: url('https://files.cdn-files-a.com/uploads/11893592/2000_69bdb298e8c20.png');"></div>
-                <div class="project-info">
-                    <p class="project-tag">Roblox • Simulation</p>
-                    <h4 style="margin: 10px 0;">BloxRonalds</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">The most realistic fast-food simulation on the platform. Manage, serve, or dine.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-aos="zoom-in-up" data-aos-delay="100">
-                <div class="project-img" style="background-image: url('https://i.ibb.co/ch3N5Dz8/Screenshot-2026-03-30-162330.png');"></div>
-                <div class="project-info">
-                    <p class="project-tag">PC • Fun</p>
-                    <h4 style="margin: 10px 0;">Birdie Boogie</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">Just a fun game! Dance with the duck, and get the beats on time!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-aos="zoom-in-up" data-aos-delay="200">
-                <div class="project-img" style="background-image: url('https://files.cdn-files-a.com/uploads/11893592/2000_69bdb3b8738c2.png');"></div>
-                <div class="project-info">
-                    <p class="project-tag">PC/Mobile • Arcade</p>
-                    <h4 style="margin: 10px 0;">Blocky 2</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">A retro-modern arcade experience. Navigate monsters to reach the final boss.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="cta" id="shop">
+        <h2>Ready to Stand Out?</h2>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; color: #9ca3af;">Grab your bottle of Get Quick today and elevate your daily pace.</p>
+        <a href="http://www.getquick.lemonade-co.site" class="btn" target="_blank">Visit Our Shop</a>
     </section>
 
     <footer>
-        <div class="footer-logo">
-            <p>Lemonade CORE</p>
-            <p style="font-size: 0.7rem; font-weight: normal; opacity: 0.5; margin-top: 10px;">© 2026 Studio Productions. All rights reserved.</p>
-        </div>
-        <div style="display: flex; gap: 40px; align-items: center;">
-            <a href="https://discord.gg/xNzMxZassu" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-discord"></i></a>
-            <a href="https://discord.gg/xNzMxZassu" target="_blank" class="btn-discord">JOIN SERVER</a>
-        </div>
+        <p>&copy; 2026 Get Quick Lemonade Co. All rights reserved.</p>
+        <p>www.core.lemonade-electronics.fun</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        window.onscroll = function() {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) { nav.classList.add('scrolled'); }
-            else { nav.classList.remove('scrolled'); }
-        };
-    </script>
 </body>
 </html>
